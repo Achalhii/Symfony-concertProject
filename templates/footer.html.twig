@@ -1,0 +1,17 @@
+<!-- Footer -->
+
+<footer class="page-footer font-small blue footer">
+    {% if detailsConcert is defined %}
+        <div class="footer-copyright text-center py-3"> Adresse du concert :
+            <a href="{{ path('room_show', {id: detailsConcert.getRoom().getId() }) }} " >{{ detailsConcert.getRoom().getName() }}</a>
+        </div>
+    {% else %}
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="https://github.com/LaureCh/ConcertProject2022/tree/TP0-Installation">concertIut</a>
+    </div>
+    <!-- Copyright -->
+    {% endif %}
+</footer>
+
+<!-- Footer -->

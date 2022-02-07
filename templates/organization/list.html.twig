@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+    La liste des Organisations
+{% endblock %}
+
+{% block body%}
+    <ul>
+        {% for organization in listOrganization %}
+            <li>
+                <div class="card">
+                    <img src="{{ organization.getPicture().getUrl() }}" alt="{{ organization.getPicture().getAlternativeName() }}">
+                    <div class="interior_card">
+                        <h5 class="card-body" >{{ organization.getName() }}</h5>
+                        <a class="btn btn-primary" href="{{ path('organization_show', {id: organization.getId() }) }}">Détails de l'organization</a>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock%}

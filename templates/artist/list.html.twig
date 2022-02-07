@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    La liste des bandes
+{% endblock %}
+
+{% block body%}
+    <ul>
+    {% for artist in listArtist %}
+        <li>
+            <div class="card">
+                <img src="{{ artist.getPicture().getUrl() }}" alt="{{ artist.getPicture().getAlternativeName() }}">
+                <div class="interior_card">
+                    <h5 class="card-body" >{{ artist.getFirstName() }}</h5>
+                    <a class="btn btn-primary" href="{{ path('artist_show', {id: artist.getId() }) }}">Détails de l'artiste</a>
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class = "button_create">
+            <a class="btn btn-primary" href="{{ path('artist_create') }}">
+                Créer un nouvelle artiste </a>
+        </div>
+    {% endif %}
+{% endblock%}

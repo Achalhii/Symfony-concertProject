@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    La liste des bandes
+{% endblock %}
+
+{% block body%}
+    <ul>
+    {% for band in listBand %}
+        <li>
+            <div class="card">
+                <img src="{{ band.getPicture().getUrl() }}" alt="{{ band.getPicture().getAlternativeName() }}">
+                <div class="interior_card">
+                    <h5 class="card-body" >{{ band.getName() }}</h5>
+                    <a class="btn btn-primary" href="{{ path('band_show', {id: band.getId() }) }}">Détails du groupe</a>
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class = "button_create">
+            <a class="btn btn-primary" href="{{ path('band_create') }}">
+                Créer un nouveau groupe</a>
+        </div>
+    {% endif %}
+{% endblock%}

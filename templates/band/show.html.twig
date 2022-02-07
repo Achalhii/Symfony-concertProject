@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+    Details de {{ detailsBand.getName() }}
+{% endblock %}
+
+{% block body %}
+    <div class="img_show">
+        <img src="{{ detailsBand.getPicture().getUrl() }}" alt="{{ detailsBand.getPicture().getAlternativeName() }}">
+        <div class="disp_show">
+            <h5>Nom du groupe : {{ detailsBand.getName() }}</h5>
+            <h5 class="card-title">Liste des prochains concert :</h5>
+            {% for concert in nextConcert %}
+            <h5 class="card-title"><a href="{{ path('concert_show', {id: concert.getId() }) }}" >{{ concert.getName() }}</a></h5>
+            {% endfor %}
+            <h4 style="margin-top: 100px">Artistes :</h4>
+        </div>
+    </div>
+
+    <ul>
+        {% for artist in ArtistArray %}
+            <li class="liArtist">
+                <div class="card divArtist">
+                    <img class="card-img-top imgArtist" src="{{ artist.getPicture().getUrl() }}"
+                         alt="{{ artist.getPicture().getAlternativeName() }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ artist.getFirstName() }}</h5>
+                        <a href="{{ path('artist_show', {id: artist.getId() }) }} " class="btn btn-primary">Détails de
+                            l'artiste</a>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="button_create">
+            <a class="btn btn-primary" href="{{ path('band_edit',{id: detailsBand.getId()}) }}">
+                Modifier ce groupe</a>
+            <a class="btn btn-primary" href="{{ path('band_delete',{id: detailsBand.getId()}) }}">
+                Supprimer ce groupe</a>
+        </div>
+    {% endif %}
+{% endblock %}

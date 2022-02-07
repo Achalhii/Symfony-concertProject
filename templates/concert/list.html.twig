@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    La liste des concerts
+{% endblock %}
+
+{% block body%}
+    <ul>
+        {% for concert in listConcerts %}
+            <li>
+                <div class="card">
+                    <img  src="{{ concert.getPicture().getUrl() }}" alt="{{ concert.getPicture().getAlternativeName() }}">
+                    <div class="interior_card">
+                        <h5 class="card-body" >{{ concert.getName() }}</h5>
+                        <a href="{{ path('concert_show', {id: concert.getId() }) }}" class="btn btn-primary">Détails du concert</a>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    {% if is_granted('ROLE_ADMIN') %}
+    <div class = "button_create">
+        <a class="btn btn-primary" href="{{ path('concert_create') }}">
+            Créer un nouveau concert</a>
+    </div>
+    {% endif %}
+{% endblock%}

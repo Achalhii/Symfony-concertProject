@@ -1,0 +1,63 @@
+body{
+    display:flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: rgba(73, 28, 122, 0.38) !important;
+}
+
+.bg_nav{
+    background-color: rgba(73, 28, 122, 0.76);
+    margin-bottom: 20px;
+}
+
+.img_show{
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.disp_show *{
+    margin-top: 30px ;
+    text-align: center;
+    width: 100%;
+}
+
+.button_create{
+    text-align: center !important;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.interior_card *{
+    text-align: center;
+    width: 100%;
+}
+
+main{
+    flex: 1 0 auto;
+}
+
+img{
+    height: 300px;
+    max-width: 300px;
+}
+.login{
+     padding : 100px;
+}
+.liArtist{
+    text-align: center;
+    position: center;
+}
+.imgArtist{
+    height: 150px;
+    display: block;
+    width: auto !important;
+}
+li{
+    display: inline-block !important;
+}
+
+
+.footer {
+
+    background-color: rgba(73, 28, 122, 0.76);
+}

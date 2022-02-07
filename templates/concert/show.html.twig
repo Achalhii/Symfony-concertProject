@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Details de {{ detailsConcert.getName() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="img_show">
+        <h5>{{ detailsConcert.getName() }}</h5>
+        <img src="{{ detailsConcert.getPicture().getUrl() }}"
+             alt="{{ detailsConcert.getPicture().getAlternativeName() }}">
+        <div class = "disp_show">
+            <h6>Date : {{ detailsConcert.getDateString() }}</h6>
+            <h6>Prix : {{ detailsConcert.getPrice() }}$</h6>
+            <h6>
+                Groupe : <a href="{{ path('band_show', {id: detailsConcert.getBands().getId() }) }} "> {{ detailsConcert.getBands().getName() }}</a>
+            </h6>
+            <h6>
+                Organization : <a href="{{ path('organization_show', {id: detailsConcert.getOrganization().getId() }) }} ">{{ detailsConcert.getOrganization().getName() }}</a>
+            </h6>
+        </div>
+        {% if is_granted('ROLE_ADMIN') %}
+        <div class="button_create">
+            <a class="btn btn-primary" href="{{ path('concert_edit',{id: detailsConcert.getId()}) }}">
+                Modifier ce concert</a>
+            <a class="btn btn-primary" href="{{ path('concert_delete',{id: detailsConcert.getId()}) }}">
+                Supprimer ce concert</a>
+        </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

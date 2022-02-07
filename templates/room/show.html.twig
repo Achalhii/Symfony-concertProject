@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+   Details de {{ detailsRoom.getName() }}
+{% endblock %}
+
+{% block body%}
+
+        <div class="img_show" >
+            <h6 >Nom de la salle : {{ detailsRoom.getName() }}</h6>
+            <h6 >Adresse de la salle : {{ detailsRoom.getAdress() }}</h6>
+            <h6 >{{ detailsRoom.getMaximumPlace() }} personnes max</h6>
+        </div>
+
+{% endblock%}

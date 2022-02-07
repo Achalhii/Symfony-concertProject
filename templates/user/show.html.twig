@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+   Details de {{ app.user.getUsername() }}
+{% endblock %}
+
+{% block body%}
+    <div class="img_show" >
+        {% if app.user %}
+            <h6>Username :{{ app.user.getUsername() }}</h6>
+            <h6>Role : {% for role in app.user.getRoles() %}
+                    {{ role }} ,
+                {% endfor %}
+            </h6>
+            <h6>Password :{{ app.user.getPassword() }}</h6>
+        {% else %}
+            <h3> Vous n'etes pas connecté </h3>
+        {% endif %}
+    </div>
+{% endblock%}

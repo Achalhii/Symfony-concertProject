@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Details de {{ detailsArtist.getFirstName() }}
+{% endblock %}
+
+{% block body %}
+    <div class="img_show" >
+        <img src="{{ detailsArtist.getPicture().getUrl() }}"
+             alt="{{ detailsArtist.getPicture().getAlternativeName() }}">
+        <div class = "disp_show">
+            <h5>Prenom : {{ detailsArtist.getFirstName() }}</h5>
+            <h5>Nom : {{ detailsArtist.getLastName() }}</h5>
+            <h5>E-Mail : {{ detailsArtist.getMail() }}</h5>
+        </div>
+    </div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="button_create">
+            <a class="btn btn-primary" href="{{ path('artist_edit',{id: detailsArtist.getId()}) }}">
+                Modifier cet artiste</a>
+            <a class="btn btn-primary" href="{{ path('artist_delete',{id: detailsArtist.getId()}) }}">
+                Supprimer cet artiste</a>
+        </div>
+    {% endif %}
+
+{% endblock %}

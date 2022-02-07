@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+   Details de {{ detailsOrganization.getName() }}
+{% endblock %}
+
+{% block body%}
+
+        <div class="img_show" >
+            <h5 >{{ detailsOrganization.getName() }}</h5>
+            <img src="{{ detailsOrganization.getPicture().getUrl() }}" alt="{{ detailsOrganization.getPicture().getAlternativeName() }}">
+            <div class = "disp_show">
+                <h6 >E-Mail : {{ detailsOrganization.getMail() }}</h6>
+            </div>
+        </div>
+{% endblock%}

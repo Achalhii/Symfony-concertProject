@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+    La liste des Salles
+{% endblock %}
+
+{% block body%}
+    <ul>
+        {% for room in listRoom %}
+            <li>
+                <div class="card">
+                    <div class="interior_card">
+                        <h5 class="card-body" >{{ room.getName() }}</h5>
+                        <a class="btn btn-primary" href="{{ path('room_show', {id: room.getId() }) }}">Détails de la salle</a>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock%}
